@@ -7,7 +7,7 @@
     <title>Looties — Open source · Developer resources</title>
     <meta
       name="description"
-      content="Looties is the neon C2C marketplace for tech swag, conference merch, and rare developer collectibles. Browse our open-source agent skills and developer resources."
+      content="Looties is the marketplace for tech swag, conference merch, and rare developer collectibles. Browse our open-source agent skills and roadmap."
     />
     <link rel="canonical" href="https://looties-io.github.io" />
 
@@ -16,7 +16,7 @@
     <meta property="og:title" content="Looties — Open source · Developer resources" />
     <meta
       property="og:description"
-      content="The neon C2C marketplace for tech swag, conference merch, and rare developer collectibles."
+      content="The marketplace for tech swag, conference merch, and rare developer collectibles."
     />
     <meta property="og:url" content="https://looties-io.github.io" />
     <meta property="og:site_name" content="Looties" />
@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="Looties — Open source · Developer resources" />
     <meta
       name="twitter:description"
-      content="The neon C2C marketplace for tech swag, conference merch, and rare developer collectibles."
+      content="The marketplace for tech swag, conference merch, and rare developer collectibles."
     />
 
     <!-- Organization JSON-LD -->
@@ -287,6 +287,45 @@
         overflow-x: auto;
       }
 
+      .skills-table {
+        width: 100%;
+        margin-top: 24px;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      .skills-table thead th {
+        text-align: left;
+        padding: 12px 16px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--text-mute);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .skills-table tbody td {
+        padding: 16px;
+        color: var(--text-dim);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .skills-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .skills-table tbody td:first-child {
+        font-family: "JetBrains Mono", "Courier New", Monaco, monospace;
+        font-size: 13px;
+        white-space: nowrap;
+        width: 1%;
+      }
+
+      .skills-table tbody td:first-child a {
+        font-weight: 600;
+      }
+
       .roadmap-list {
         list-style: none;
         display: flex;
@@ -314,6 +353,9 @@
         text-transform: uppercase;
       }
 
+      .status-beta {
+        color: var(--orange);
+      }
       .status-now {
         color: var(--cyan);
       }
@@ -375,9 +417,10 @@
           and the <span class="accent">tools we build with</span>.
         </h1>
         <p>
-          Looties is the neon C2C marketplace for buying and selling tech swag,
-          conference merch, and rare developer collectibles — and this is where
-          we publish the open-source skills we use to build it.
+          Looties is the marketplace for buying and selling tech swag,
+          conference merch, and rare developer collectibles, and this is where
+          we publish the open-source skills we use to build it and communicate
+          about the roadmap.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://looties.io" rel="noopener"
@@ -439,12 +482,13 @@
       <section>
         <h2>Open source skills</h2>
         <div class="skill-card">
-          <span class="tag">Agent skill · Claude Code · Codex</span>
-          <h3>cinematic-hyperframes</h3>
+          <span class="tag">Agent skills · Claude Code · Codex</span>
+          <h3>looties-skills</h3>
           <p>
-            Cinematic, VFX-friendly Hyperframes motion design for HTML-to-video
-            product films. Composition rules, typography, transitions, and
-            rendering validation — packaged as a reusable agent workflow.
+            The agent skills we built to ship Looties, packaged so other teams
+            can install and reuse them. One command installs the whole
+            collection — each skill is also a self-contained folder you can
+            pick individually.
           </p>
           <code>npx skills.sh install looties-io/looties-skills</code>
           <a
@@ -453,31 +497,54 @@
             >View on GitHub →</a
           >
         </div>
+
+        <table class="skills-table">
+          <thead>
+            <tr>
+              <th>Skill</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="https://github.com/looties-io/looties-skills/tree/main/cinematic-hyperframes"
+                  rel="noopener"
+                  >cinematic-hyperframes</a
+                >
+              </td>
+              <td>
+                Cinematic, VFX-friendly Hyperframes motion design for
+                HTML-to-video product films.
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <section>
         <h2>Roadmap</h2>
         <ul class="roadmap-list">
           <li>
+            <span class="status status-beta">Beta</span>
+            <span>US-to-US shipping</span>
+          </li>
+          <li>
             <span class="status status-now">Now</span>
-            <span
-              >Cinematic Hyperframes skill — production-tested for SaaS,
-              ecommerce, and app launch videos.</span
-            >
+            <span>Chrome Extension</span>
           </li>
           <li>
             <span class="status status-next">Next</span>
-            <span
-              >Listing copy skill — generate seller-ready listings from a
-              single photo, with brand-aware tone.</span
-            >
+            <span>Notification system improvement</span>
           </li>
           <li>
             <span class="status status-later">Later</span>
-            <span
-              >Avatar &amp; photo skills — power the Looties seller flow with
-              shared, open-source agent primitives.</span
-            >
+            <span>Advanced fraud detection system</span>
+          </li>
+          <li>
+            <span class="status status-later">Later</span>
+            <span>Bundles</span>
           </li>
         </ul>
       </section>
