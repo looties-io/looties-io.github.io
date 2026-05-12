@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0F172A" />
+    <title>Looties — Open source · Developer resources</title>
+    <meta
+      name="description"
+      content="Looties is the neon C2C marketplace for tech swag, conference merch, and rare developer collectibles. Browse our open-source agent skills and developer resources."
+    />
+    <link rel="canonical" href="https://looties-io.github.io" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Looties — Open source · Developer resources" />
+    <meta
+      property="og:description"
+      content="The neon C2C marketplace for tech swag, conference merch, and rare developer collectibles."
+    />
+    <meta property="og:url" content="https://looties-io.github.io" />
+    <meta property="og:site_name" content="Looties" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Looties — Open source · Developer resources" />
+    <meta
+      name="twitter:description"
+      content="The neon C2C marketplace for tech swag, conference merch, and rare developer collectibles."
+    />
+
+    <!-- Organization JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Looties",
+        "url": "https://looties.io",
+        "logo": "https://looties.io/logo_transparent_-_favicon.webp",
+        "description": "Peer-to-peer marketplace for buying and selling rare tech swag, conference merch, and onboarding kits from top tech companies.",
+        "sameAs": [
+          "https://looties.io",
+          "https://github.com/looties-io",
+          "https://www.instagram.com/looties.io/",
+          "https://discord.gg/A6UcsyCHCb"
+        ]
+      }
+    </script>
+
+    <style>
+      :root {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --border: #334155;
+        --text: #ffffff;
+        --text-dim: #cbd5e1;
+        --text-mute: #64748b;
+        --cyan: #00d9ff;
+        --pink: #ff006e;
+        --orange: #ff6b35;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--cyan);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+      a:hover {
+        color: var(--text);
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 64px 24px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 64px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--text);
+      }
+
+      .brand-dot {
+        width: 10px;
+        height: 10px;
+        background: var(--cyan);
+        border-radius: 50%;
+        box-shadow: 0 0 12px var(--cyan);
+      }
+
+      .header-cta {
+        color: var(--cyan);
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-family:
+          "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+      }
+
+      .hero h1 .accent {
+        background: linear-gradient(
+          90deg,
+          var(--cyan) 0%,
+          var(--pink) 50%,
+          var(--orange) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: var(--text-dim);
+        max-width: 640px;
+        margin-bottom: 28px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        transition: all 0.15s ease;
+      }
+
+      .btn-primary {
+        background: var(--cyan);
+        color: var(--bg);
+        box-shadow: 0 0 24px rgba(0, 217, 255, 0.35);
+      }
+      .btn-primary:hover {
+        background: var(--text);
+        color: var(--bg);
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+      .btn-secondary:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      section {
+        margin-top: 80px;
+      }
+
+      h2 {
+        font-family:
+          "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 24px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      @media (min-width: 640px) {
+        .two-col {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .card {
+        padding: 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: border-color 0.15s ease;
+      }
+      .card:hover {
+        border-color: var(--cyan);
+      }
+
+      .card h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+
+      .card p {
+        font-size: 14px;
+        color: var(--text-dim);
+        margin-bottom: 14px;
+      }
+
+      .card a {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .skill-card {
+        padding: 28px;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 217, 255, 0.06) 0%,
+          rgba(255, 0, 110, 0.04) 100%
+        );
+        border: 1px solid var(--border);
+        border-radius: 16px;
+      }
+
+      .skill-card .tag {
+        display: inline-block;
+        padding: 4px 10px;
+        background: rgba(0, 217, 255, 0.1);
+        color: var(--cyan);
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .skill-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .skill-card p {
+        color: var(--text-dim);
+        margin-bottom: 18px;
+      }
+
+      .skill-card code {
+        display: block;
+        padding: 12px 14px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-family: "JetBrains Mono", "Courier New", Monaco, monospace;
+        font-size: 13px;
+        color: var(--cyan);
+        margin-bottom: 18px;
+        overflow-x: auto;
+      }
+
+      .roadmap-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .roadmap-list li {
+        display: flex;
+        gap: 14px;
+        padding: 16px 18px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 14px;
+        color: var(--text-dim);
+      }
+
+      .roadmap-list .status {
+        flex-shrink: 0;
+        font-family: "JetBrains Mono", "Courier New", Monaco, monospace;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .status-now {
+        color: var(--cyan);
+      }
+      .status-next {
+        color: var(--pink);
+      }
+      .status-later {
+        color: var(--text-mute);
+      }
+
+      footer {
+        margin-top: 96px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        font-size: 14px;
+        color: var(--text-dim);
+      }
+
+      .footer-links a {
+        color: var(--text-dim);
+      }
+      .footer-links a:hover {
+        color: var(--cyan);
+      }
+
+      .copyright {
+        font-size: 13px;
+        color: var(--text-mute);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <span class="brand"><span class="brand-dot"></span>Looties</span>
+        <a class="header-cta" href="https://looties.io" rel="noopener"
+          >Open the marketplace →</a
+        >
+      </header>
+
+      <section class="hero" style="margin-top: 0">
+        <h1>
+          Tech swag, rare merch,<br />
+          and the <span class="accent">tools we build with</span>.
+        </h1>
+        <p>
+          Looties is the neon C2C marketplace for buying and selling tech swag,
+          conference merch, and rare developer collectibles — and this is where
+          we publish the open-source skills we use to build it.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://looties.io" rel="noopener"
+            >Visit looties.io</a
+          >
+          <a
+            class="btn btn-secondary"
+            href="https://github.com/looties-io/looties-skills"
+            rel="noopener"
+            >Browse skills</a
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>For the community</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>For sellers</h3>
+            <p>
+              Turn the swag pile under your desk into cash. List in minutes,
+              ship with one-click labels.
+            </p>
+            <a href="https://looties.io/sell" rel="noopener"
+              >Start selling →</a
+            >
+          </div>
+          <div class="card">
+            <h3>For buyers</h3>
+            <p>
+              Hunt rare conference merch, archived launch gear, and developer
+              culture artifacts from top tech brands.
+            </p>
+            <a href="https://looties.io" rel="noopener">Browse listings →</a>
+          </div>
+          <div class="card">
+            <h3>Merch Museum</h3>
+            <p>
+              A visual archive of unavailable tech merch from the brands
+              shaping developer culture.
+            </p>
+            <a href="https://looties.io/merch-museum" rel="noopener"
+              >Open the museum →</a
+            >
+          </div>
+          <div class="card">
+            <h3>Developer Conferences</h3>
+            <p>
+              The conference calendar built for developers. Find the next event
+              worth your travel budget.
+            </p>
+            <a href="https://looties.io/developer-conferences" rel="noopener"
+              >See the calendar →</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Open source skills</h2>
+        <div class="skill-card">
+          <span class="tag">Agent skill · Claude Code · Codex</span>
+          <h3>cinematic-hyperframes</h3>
+          <p>
+            Cinematic, VFX-friendly Hyperframes motion design for HTML-to-video
+            product films. Composition rules, typography, transitions, and
+            rendering validation — packaged as a reusable agent workflow.
+          </p>
+          <code>npx skills.sh install looties-io/looties-skills</code>
+          <a
+            href="https://github.com/looties-io/looties-skills"
+            rel="noopener"
+            >View on GitHub →</a
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Roadmap</h2>
+        <ul class="roadmap-list">
+          <li>
+            <span class="status status-now">Now</span>
+            <span
+              >Cinematic Hyperframes skill — production-tested for SaaS,
+              ecommerce, and app launch videos.</span
+            >
+          </li>
+          <li>
+            <span class="status status-next">Next</span>
+            <span
+              >Listing copy skill — generate seller-ready listings from a
+              single photo, with brand-aware tone.</span
+            >
+          </li>
+          <li>
+            <span class="status status-later">Later</span>
+            <span
+              >Avatar &amp; photo skills — power the Looties seller flow with
+              shared, open-source agent primitives.</span
+            >
+          </li>
+        </ul>
+      </section>
+
+      <footer>
+        <div class="footer-links">
+          <a href="https://looties.io" rel="noopener">looties.io</a>
+          <a href="https://github.com/looties-io" rel="noopener">GitHub</a>
+          <a href="https://discord.gg/A6UcsyCHCb" rel="noopener">Discord</a>
+          <a
+            href="https://www.instagram.com/looties.io/"
+            rel="noopener"
+            >Instagram</a
+          >
+          <a href="https://looties.io/sitemap.xml" rel="noopener">Sitemap</a>
+        </div>
+        <p class="copyright">
+          © 2026 Looties · Forged ⚒️ in the French Alps 🏔️ during ranked queue
+          🎮
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
